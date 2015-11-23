@@ -11,7 +11,6 @@ MANIFEST
 .tox/
 .vagrant
 /.coverage
-/htmlcov/
 /env/
 # Used in demo apps
 secrets.cfg
