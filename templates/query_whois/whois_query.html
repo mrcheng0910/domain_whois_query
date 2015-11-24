@@ -19,7 +19,7 @@
                     <label for="domain">请输入域名</label>
                     <input type="text" class="form-control" id="domain" placeholder="baidu.com">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" id="domain_query">Submit</button>
             </form>
         </div>
     </div>
@@ -32,42 +32,39 @@
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover table-striped">
-                        <tr>
-                            <th>信息</th>
-                            <th>内容</th>
-                        </tr>
+
                         <tr>
                             <td>注册人</td>
-                            <td>张桑</td>
+                            <td id="reg_name"></td>
                         </tr>
                         <tr>
                             <td>注册商</td>
-                            <td>百度科技有限公司</td>
+                            <td id="reg_org"></td>
                         </tr>
                         <tr>
                             <td>注册人电话</td>
-                            <td>11111111</td>
+                            <td id="reg_phone"></td>
                         </tr>
                         <tr>
                             <td>注册人邮箱</td>
-                            <td>for_cyn@163.com</td>
+                            <td id="reg_email"></td>
                         </tr>
                         <tr>
                             <td>注册时间</td>
-                            <td>1990.2.9</td>
+                            <td id="creation_date">1990.2.9</td>
                         </tr>
                         <tr>
                             <td>修改时间</td>
-                            <td>1998.1.1</td>
+                            <td id="updated_date">1998.1.1</td>
                         </tr>
                         <tr>
                             <td>到期时间</td>
-                            <td>2002.2.2</td>
+                            <td id="expiration_date">2002.2.2</td>
                         </tr>
                     </table>
                 </div>
                 <div class="panel-footer">
-                    以上信息采集于:2015-4-5 <button>获取最新</button>
+                    以上信息采集于:<span id="insert_time">niao</span> <button>获取最新</button>
                 </div>
             </div>
             <button class="button">详细信息>></button>
@@ -77,4 +74,17 @@
         </div>
     </div>
 </div>
+
+{% end %}
+{% block foot_script %}
+<script>
+    $(function (){
+        $("#domain_query").bind("click", function () {
+            $.post('/whois', {domain:$(domain).val()}, function(data){
+             test(data);
+            });
+        });
+    });
+</script>
+<script src="{{static_url("js/query_whois.js")}}"></script>
 {% end %}
