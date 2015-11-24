@@ -1,0 +1,80 @@
+{% extends "../main_tp.html" %}
+{% block head_link %}
+
+{% end %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h1>域名WHOIS信息查询</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-offset-2" style="margin-bottom: 15px;">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="domain">请输入域名</label>
+                    <input type="text" class="form-control" id="domain" placeholder="baidu.com">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-7 col-md-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    域名<code>sina.com</code>的WHOIS信息
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover table-striped">
+                        <tr>
+                            <th>信息</th>
+                            <th>内容</th>
+                        </tr>
+                        <tr>
+                            <td>注册人</td>
+                            <td>张桑</td>
+                        </tr>
+                        <tr>
+                            <td>注册商</td>
+                            <td>百度科技有限公司</td>
+                        </tr>
+                        <tr>
+                            <td>注册人电话</td>
+                            <td>11111111</td>
+                        </tr>
+                        <tr>
+                            <td>注册人邮箱</td>
+                            <td>for_cyn@163.com</td>
+                        </tr>
+                        <tr>
+                            <td>注册时间</td>
+                            <td>1990.2.9</td>
+                        </tr>
+                        <tr>
+                            <td>修改时间</td>
+                            <td>1998.1.1</td>
+                        </tr>
+                        <tr>
+                            <td>到期时间</td>
+                            <td>2002.2.2</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    以上信息采集于:2015-4-5 <button>获取最新</button>
+                </div>
+            </div>
+            <button class="button">详细信息>></button>
+            <pre class="hide">
+                #import inhao"
+            </pre>
+        </div>
+    </div>
+</div>
+{% end %}
