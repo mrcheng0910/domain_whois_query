@@ -1,9 +1,5 @@
 {% extends "../main_tp.html" %}
-{% block head_link %}
-
-{% end %}
 {% block body %}
-
 <div class="container">
     <div class="row">
         <div class="page-header">
@@ -19,7 +15,7 @@
                     <label for="domain">请输入域名</label>
                     <input type="text" class="form-control" id="domain" placeholder="baidu.com">
                 </div>
-                <button type="submit" class="btn btn-default" id="domain_query">Submit</button>
+                <button type="submit" class="btn btn-default" id="domain_query">查询WHOIS</button>
             </form>
         </div>
     </div>
@@ -32,10 +28,9 @@
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover table-striped">
-
                         <tr>
                             <td>注册人</td>
-                            <td id="reg_name"></td>
+                            <td id="reg_name">ddd</td>
                         </tr>
                         <tr>
                             <td>注册商</td>
@@ -63,6 +58,9 @@
                         </tr>
                     </table>
                 </div>
+                <script>
+                    $(document).ready(test({% raw domain_whois%}))
+                </script>
                 <div class="panel-footer">
                     以上信息采集于:<span id="insert_time">niao</span> <button>获取最新</button>
                 </div>
@@ -77,14 +75,5 @@
 
 {% end %}
 {% block foot_script %}
-<script>
-    $(function (){
-        $("#domain_query").bind("click", function () {
-            $.post('/whois', {domain:$(domain).val()}, function(data){
-             test(data);
-            });
-        });
-    });
-</script>
-<script src="{{static_url("js/query_whois.js")}}"></script>
+<script src={{static_url("js/query_whois.js")}}></script>
 {% end %}

@@ -6,6 +6,7 @@ import tornado.web
 import json
 from models.query_db import DomainWhoisDb # 域名查询数据库
 from datetime import datetime,date
+
 HTML_PATH = "./query_whois/"
 
 
@@ -13,7 +14,8 @@ class DomainWhoisHandler(tornado.web.RequestHandler):
     """查询域名whois信息"""
     def get(self):
         self.render(HTML_PATH+'whois_query.html',
-                    title="域名whois查询")
+                    title="域名whois查询",
+                    domain_whois="")
 
     def post(self):
         domain = self.get_argument('domain', "None")
@@ -22,6 +24,7 @@ class DomainWhoisHandler(tornado.web.RequestHandler):
 
 
 class ComplexEncoder(json.JSONEncoder):
+    """json支持datetime格式数据"""
     def default(self, obj):
         if isinstance(obj, datetime):
             return obj.strftime('%Y-%m-%d %H:%M:%S')
