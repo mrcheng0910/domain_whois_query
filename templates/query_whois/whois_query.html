@@ -1,79 +1,125 @@
 {% extends "../main_tp.html" %}
-{% block body %}
-<div class="container">
-    <div class="row">
-        <div class="page-header">
-            <h1>域名WHOIS信息查询</h1>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-5 col-md-offset-2" style="margin-bottom: 15px;">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="domain">请输入域名</label>
-                    <input type="text" class="form-control" id="domain" placeholder="baidu.com">
-                </div>
-                <button type="submit" class="btn btn-default" id="domain_query">查询WHOIS</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-7 col-md-offset-1">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    域名<code>sina.com</code>的WHOIS信息
-                </div>
-                <div class="panel-body">
-                    <table class="table table-hover table-striped">
-                        <tr>
-                            <td>注册人</td>
-                            <td id="reg_name">ddd</td>
-                        </tr>
-                        <tr>
-                            <td>注册商</td>
-                            <td id="reg_org"></td>
-                        </tr>
-                        <tr>
-                            <td>注册人电话</td>
-                            <td id="reg_phone"></td>
-                        </tr>
-                        <tr>
-                            <td>注册人邮箱</td>
-                            <td id="reg_email"></td>
-                        </tr>
-                        <tr>
-                            <td>注册时间</td>
-                            <td id="creation_date">1990.2.9</td>
-                        </tr>
-                        <tr>
-                            <td>修改时间</td>
-                            <td id="updated_date">1998.1.1</td>
-                        </tr>
-                        <tr>
-                            <td>到期时间</td>
-                            <td id="expiration_date">2002.2.2</td>
-                        </tr>
-                    </table>
-                </div>
-                <script>
-                    $(document).ready(test({% raw domain_whois%}))
-                </script>
-                <div class="panel-footer">
-                    以上信息采集于:<span id="insert_time">niao</span> <button>获取最新</button>
-                </div>
-            </div>
-            <button class="button">详细信息>></button>
-            <pre class="hide">
-                #import inhao"
-            </pre>
-        </div>
-    </div>
-</div>
-
+{% block head %}
+    <title>域名whois查询</title>
 {% end %}
-{% block foot_script %}
-<script src={{static_url("js/query_whois.js")}}></script>
+{% block body %}
+<div class="row" style="background-color: white;margin-top: 40px;">
+    <div class="row">
+        <form method="post" action="/whois" style="margin-top: 50px;">
+            <div class="row">
+                <div class="large-3 columns">
+                    <label for="name" class="inline right">请输入域名</label>
+                </div>
+                <div class="large-6 columns">
+                    <input type="text" id="name" name="domain" placeholder="例,baidu.com" required>
+                </div>
+                <div class="large-3 columns">
+                    <input type="submit" class="button tiny" value="查询">
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="row" hidden>
+        <div class="large-12 columns">
+            <div data-alert class="alert-box secondary radius">
+                以下信息来自于2015-5-6更新
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-8 columns">
+            <table style="margin-left: 40px;width:auto;">
+                <thead>
+                    <tr>
+                        <th width="200">关键信息</th>
+                        <th width="400">内容</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>域名<br>Domain Name</td>
+                            <td>{{domain}}</td>
+                        </tr>
+                        <tr>
+                            <td>WHOIS服务器<br>Whois Server</td>
+                            <td>{{server}}</td>
+                        </tr>
+                        <tr>
+                            <td>注册机构<br>Registrant Organization</td>
+                            <td>{{reg_org}}</td>
+                        </tr>
+                        <tr>
+                            <td>注册人<br>Registrant Name</td>
+                            <td>{{reg_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>注册电话<br>Registrant Phone</td>
+                            <td>{{reg_phone}}</td>
+                        </tr>
+                        <tr>
+                            <td>注册邮箱<br>Registrant Email</td>
+                            <td>{{reg_email}}</td>
+                        </tr>
+                        <tr>
+                            <td>注册日期<br>Creation Date</td>
+                            <td>{{creation_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>更改日期<br>Updated Date</td>
+                            <td>{{updated_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>到期日期<br>Expiration Date</td>
+                            <td>{{expiration_date}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><a href="#"><li class="fa fa-plus-square"> 单击查询更详细信息</li></a></td>
+                        </tr>
+                        <tr hidden>
+                            <td colspan="2"><pre>
+                                nihao,nishisowjdljldjel
+                            </pre></td>
+                        </tr>
+                  </tbody>
+
+            </table>
+        </div>
+        <div class="large-4 columns">
+            <table style="margin-right: 40px;">
+                <thead>
+                    <tr>
+                        <th width="300">域名</th>
+                        <th width="200">是否注册</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>baidu.com</td>
+                            <td>注册</td>
+                        </tr>
+                        <tr>
+                            <td>baidu.cn</td>
+                            <td>注册</td>
+                        </tr>
+                        <tr>
+                            <td>baidu.wang</td>
+                            <td>注册</td>
+                        </tr>
+                        <tr>
+                            <td>注册电话</td>
+                            <td>1234567</td>
+                        </tr>
+                  </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% end %}
+{% block foot_js %}
+<script>
+    $(document).ready(function(){
+         $("#whois").attr("class","active");
+    })
+</script>
 {% end %}

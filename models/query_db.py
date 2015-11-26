@@ -13,7 +13,7 @@ class DomainWhoisDb(BaseDb):
     def domain_whois(self,domain=""):
         """获取域名的whois信息"""
         domain_initial = self.extract_initial(domain)
-        sql = " SELECT top_whois_server,sec_whois_server,reg_name,\
+        sql = " SELECT top_whois_server,reg_email,reg_name,\
                 reg_phone,org_name,creation_date,expiration_date,updated_date,\
                 domain_details,insert_time FROM domain_whois_%s WHERE domain='%s'" % (domain_initial,domain)
         domains = self.db.query(sql)

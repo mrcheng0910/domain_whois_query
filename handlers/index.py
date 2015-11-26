@@ -7,5 +7,4 @@ import tornado.web
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render('index1.html',
-                    title="首页")
+        self.render('index.html')
