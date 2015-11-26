@@ -74,12 +74,16 @@
                             <td>{{expiration_date}}</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><a href="#"><li class="fa fa-plus-square"> 单击查询更详细信息</li></a></td>
+                            <td colspan="2">
+                                <span class="label" id="btn-more" style="font-size:14px;"><i class="fa fa-angle-double-right" id="more"></i> 更详细信息</span>
+                            </td>
                         </tr>
-                        <tr hidden>
-                            <td colspan="2"><pre>
-                                nihao,nishisowjdljldjel
-                            </pre></td>
+                        <tr hidden id="tr-show">
+                            <td colspan="2">
+                                <pre>
+                                {{detail}}
+                                </pre>
+                            </td>
                         </tr>
                   </tbody>
 
@@ -89,7 +93,7 @@
             <table style="margin-right: 40px;">
                 <thead>
                     <tr>
-                        <th width="300">域名</th>
+                        <th width="300">类似域名</th>
                         <th width="200">是否注册</th>
                     </tr>
                 </thead>
@@ -106,10 +110,6 @@
                             <td>baidu.wang</td>
                             <td>注册</td>
                         </tr>
-                        <tr>
-                            <td>注册电话</td>
-                            <td>1234567</td>
-                        </tr>
                   </tbody>
             </table>
         </div>
@@ -120,6 +120,18 @@
 <script>
     $(document).ready(function(){
          $("#whois").attr("class","active");
-    })
+    });
+    $(document).ready(function(){
+       $("#btn-more").bind("click",function(){
+//          $("#tr-show").show()
+            $("#tr-show").fadeToggle("slow",function(){
+                if ($("#more").attr("class")=="fa fa-angle-double-right"){
+                    $("#more").attr("class","fa fa-angle-double-down");
+                }else{
+                    $("#more").attr("class","fa fa-angle-double-right");
+                }
+            });
+       });
+    });
 </script>
 {% end %}

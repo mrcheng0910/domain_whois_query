@@ -22,7 +22,8 @@ class DomainWhoisHandler(tornado.web.RequestHandler):
                     reg_email="",
                     creation_date="",
                     updated_date="",
-                    expiration_date=""
+                    expiration_date="",
+                    detail = ""
                     )
     def post(self):
         domain = self.get_argument('domain', "None")
@@ -30,7 +31,7 @@ class DomainWhoisHandler(tornado.web.RequestHandler):
         print whois
         if not whois:
             # self.write("wu")
-            self.redirect('/whois')
+            self.redirect('/whois')  # 重定向
         # self.write(json.dumps(domain_whois,cls=ComplexEncoder))
         self.render(HTML_PATH+'whois_query.html',
                     domain=domain,
@@ -41,7 +42,8 @@ class DomainWhoisHandler(tornado.web.RequestHandler):
                     reg_email=whois[0].get('reg_email',None),
                     creation_date=whois[0].get('creation_date',None),
                     updated_date=whois[0].get('updated_date',None),
-                    expiration_date=whois[0].get('expiration_date',None)
+                    expiration_date=whois[0].get('expiration_date',None),
+                    detail = whois[0].get('domain_details',None)
                     )
 class ComplexEncoder(json.JSONEncoder):
     """json支持datetime格式数据"""
