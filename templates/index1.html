@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>测试首页内容</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://static.runoob.com/assets/foundation-5.5.3/foundation.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="http://static.runoob.com/assets/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://static.runoob.com/assets/foundation-5.5.3/js/foundation.min.js"></script>
+    <script src="http://static.runoob.com/assets/foundation-5.5.3/js/vendor/modernizr.js"></script>
+</head>
+<body style="height:1500px;background-color: #eeeeee;">
+
+<div class="fixed">
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="#">网络与信息安全研究团队</a></h1>
+            </li>
+            <!-- 小屏幕上折叠按钮: 去掉 .menu-icon 类，可以去除图标。
+           如果需要只显示图片，可以删除 "Menu" 文本 -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+            <ul class="left">
+                <li><a href="#">首页</a></li>
+                <li class="active"><a href="#">WHOIS查询</a></li>
+                <li><a href="#">IP定位</a></li>
+                <li><a href="#">DNS查询</a></li>
+                <li class="has-dropdown">
+                    <a href="#">其他服务</a>
+                    <ul class="dropdown">
+                        <li><label>levea</label></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </nav>
+</div>
+<div class="row" style="background-color: white;margin-top: 40px;">
+    <div class="row">
+        <form method="get" action="/query_whois" style="margin-top: 50px;">
+            <div class="row">
+                <div class="large-3 columns">
+                    <label for="name" class="inline right">请输入域名</label>
+                </div>
+                <div class="large-6 columns">
+                    <input type="text" id="name" placeholder="例,baidu.com">
+                </div>
+                <div class="large-3 columns">
+                    <input type="submit" class="button tiny" value="查询">
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="large-8 columns">
+            <table style="margin-left: 40px;width:auto;">
+                <thead>
+                    <tr>
+                        <th width="200">信息</th>
+                        <th width="400">内容</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>域名<br>Domain Name</td>
+                            <td>baidu.com</td>
+                        </tr>
+                        <tr>
+                            <td>WHOIS服务器<br>Whois Server</td>
+                            <td>whois.nic.com</td>
+                        </tr>
+                        <tr>
+                            <td>注册机构<br>Registrant Organization</td>
+                            <td>百度科技有限公司</td>
+                        </tr>
+                        <tr>
+                            <td>注册人<br>Registrant Name</td>
+                            <td>张三</td>
+                        </tr>
+                        <tr>
+                            <td>注册电话<br>Registrant Phone</td>
+                            <td>1234567</td>
+                        </tr>
+                        <tr>
+                            <td>注册邮箱<br>Registrant Email</td>
+                            <td>for_cyn@163.com</td>
+                        </tr>
+                        <tr>
+                            <td>注册日期<br>Creation Date</td>
+                            <td>2013.3.3</td>
+                        </tr>
+                        <tr>
+                            <td>更改日期<br>Updated Date</td>
+                            <td>2013.3.3</td>
+                        </tr>
+                        <tr>
+                            <td>到期日期<br>Expiration Date</td>
+                            <td>2013.3.3</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><a href="#"><li class="fa fa-plus-square"> 单击查询更详细信息</li></a></td>
+                        </tr>
+                        <tr hidden>
+                            <td colspan="2"><pre>
+                                nihao,nishisowjdljldjel
+                            </pre></td>
+                        </tr>
+                  </tbody>
+
+            </table>
+        </div>
+        <div class="large-4 columns">
+            <table style="margin-right: 40px;">
+                <thead>
+                    <tr>
+                        <th width="300">域名</th>
+                        <th width="200">是否注册</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <td>baidu.com</td>
+                            <td>注册</td>
+                        </tr>
+                        <tr>
+                            <td>baidu.cn</td>
+                            <td>注册</td>
+                        </tr>
+                        <tr>
+                            <td>baidu.wang</td>
+                            <td>注册</td>
+                        </tr>
+                        <tr>
+                            <td>注册电话</td>
+                            <td>1234567</td>
+                        </tr>
+                  </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- 初始化 Foundation JS -->
+<script>
+    $(document).ready(function () {
+        $(document).foundation();
+    })
+</script>
+
+</body>
+</html>
