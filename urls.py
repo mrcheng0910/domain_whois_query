@@ -6,6 +6,6 @@ from handlers.index import IndexHandler
 from handlers.whois_query import DomainWhoisHandler
 urls = [
     (r'/', IndexHandler),
-    (r'/whois',DomainWhoisHandler)
+    (r'/whois',DomainWhoisHandler),
 
 ]
