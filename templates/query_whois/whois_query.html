@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <span class="label" id="btn-more" style="font-size:14px;"><i class="fa fa-angle-double-right" id="more"></i> 更详细信息</span>
+                                <span class="label" id="btn-more" style="font-size:14px;"><i class="fa fa-angle-double-right fa-fw" id="more"></i> 更详细信息</span>
                             </td>
                         </tr>
                         <tr hidden id="tr-show">
@@ -125,10 +125,10 @@
        $("#btn-more").bind("click",function(){
 //          $("#tr-show").show()
             $("#tr-show").fadeToggle("slow",function(){
-                if ($("#more").attr("class")=="fa fa-angle-double-right"){
-                    $("#more").attr("class","fa fa-angle-double-down");
+                if ($("#more").attr("class")=="fa fa-angle-double-right fa-fw"){
+                    $("#more").attr("class","fa fa-angle-double-down fa-fw");
                 }else{
-                    $("#more").attr("class","fa fa-angle-double-right");
+                    $("#more").attr("class","fa fa-angle-double-right fa-fw");
                 }
             });
        });
