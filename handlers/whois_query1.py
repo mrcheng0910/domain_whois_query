@@ -14,7 +14,10 @@ class DomainWhoisHandler(tornado.web.RequestHandler):
     """查询域名whois信息"""
     def get(self):
         self.render(HTML_PATH+'query.html',)
-
+    def post(self):
+        domain = self.get_argument('domain', "None")
+        domain_whois = DomainWhoisDb().domain_whois(domain)
+        self.write(json.dumps(domain_whois,cls=ComplexEncoder))
 class ComplexEncoder(json.JSONEncoder):
     """json支持datetime格式数据"""
     def default(self, obj):

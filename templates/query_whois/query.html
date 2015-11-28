@@ -1,6 +1,6 @@
 {% extends "../main_tp.html" %}
 {% block head %}
-    <title>域名whois查询</title>
+<title>域名whois查询</title>
 {% end %}
 {% block body %}
 <div class="row" style="background-color: white;margin-top: 40px;">
@@ -27,85 +27,86 @@
         <div class="large-8 columns">
             <table style="margin-left: 40px;width:auto;">
                 <thead>
-                    <tr>
-                        <th width="200">关键信息</th>
-                        <th width="400">内容</th>
-                    </tr>
+                <tr>
+                    <th width="200">关键信息</th>
+                    <th width="400">内容</th>
+                </tr>
                 </thead>
-                    <tbody>
-                        <tr>
-                            <td>域名<br>Domain Name</td>
-                            <td id="query_domain"></td>
-                        </tr>
-                        <tr>
-                            <td>WHOIS服务器<br>Whois Server</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>注册机构<br>Registrant Organization</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>注册人<br>Registrant Name</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>注册电话<br>Registrant Phone</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>注册邮箱<br>Registrant Email</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>注册日期<br>Creation Date</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>更改日期<br>Updated Date</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>到期日期<br>Expiration Date</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span class="label" id="btn-more" style="font-size:14px;"><i class="fa fa-angle-double-right fa-fw" id="more"></i> 更详细信息</span>
-                            </td>
-                        </tr>
-                        <tr hidden id="tr-show">
-                            <td colspan="2">
+                <tbody>
+                <tr>
+                    <td>域名<br>Domain Name</td>
+                    <td id="query_domain"></td>
+                </tr>
+                <tr>
+                    <td>WHOIS服务器<br>Whois Server</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>注册机构<br>Registrant Organization</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>注册人<br>Registrant Name</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>注册电话<br>Registrant Phone</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>注册邮箱<br>Registrant Email</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>注册日期<br>Creation Date</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>更改日期<br>Updated Date</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>到期日期<br>Expiration Date</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span class="label" id="btn-more" style="font-size:14px;"><i
+                                class="fa fa-angle-double-right fa-fw" id="more"></i> 更详细信息</span>
+                    </td>
+                </tr>
+                <tr hidden id="tr-show">
+                    <td colspan="2">
                                 <pre>
                                 </pre>
-                            </td>
-                        </tr>
-                  </tbody>
+                    </td>
+                </tr>
+                </tbody>
 
             </table>
         </div>
         <div class="large-4 columns">
             <table style="margin-right: 40px;">
                 <thead>
-                    <tr>
-                        <th width="300">类似域名</th>
-                        <th width="200">是否注册</th>
-                    </tr>
+                <tr>
+                    <th width="300">类似域名</th>
+                    <th width="200">是否注册</th>
+                </tr>
                 </thead>
-                    <tbody>
-                        <tr>
-                            <td>baidu.com</td>
-                            <td>注册</td>
-                        </tr>
-                        <tr>
-                            <td>baidu.cn</td>
-                            <td>注册</td>
-                        </tr>
-                        <tr>
-                            <td>baidu.wang</td>
-                            <td>注册</td>
-                        </tr>
-                  </tbody>
+                <tbody>
+                <tr>
+                    <td>baidu.com</td>
+                    <td>注册</td>
+                </tr>
+                <tr>
+                    <td>baidu.cn</td>
+                    <td>注册</td>
+                </tr>
+                <tr>
+                    <td>baidu.wang</td>
+                    <td>注册</td>
+                </tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -113,29 +114,41 @@
 {% end %}
 {% block foot_js %}
 <script>
-    $(document).ready(function(){
-         $("#whois").attr("class","active");
+    $(document).ready(function () {
+        $("#whois").attr("class", "active");
     });
-    $(document).ready(function(){
-       $("#btn-more").bind("click",function(){
-            $("#tr-show").fadeToggle("slow",function(){
-                if ($("#more").attr("class")=="fa fa-angle-double-right fa-fw"){
-                    $("#more").attr("class","fa fa-angle-double-down fa-fw");
-                }else{
-                    $("#more").attr("class","fa fa-angle-double-right fa-fw");
+    $(document).ready(function () {
+        $("#btn-more").bind("click", function () {
+            $("#tr-show").fadeToggle("slow", function () {
+                if ($("#more").attr("class") == "fa fa-angle-double-right fa-fw") {
+                    $("#more").attr("class", "fa fa-angle-double-down fa-fw");
+                } else {
+                    $("#more").attr("class", "fa fa-angle-double-right fa-fw");
                 }
             });
-       });
-    });
-    $(document).ready(function(){
-       $("#btn-query").bind("click",function(){
-           $.post('/whois/query', {domain: $("#name").val()}, function (data) {
-            //test(data);
-//            alert(data);
-               alert(typeof (data));
-               alert(typeof (JSON.parse(data)));
         });
-       });
+    });
+    $(document).ready(function () {
+        $("#btn-query").bind("click", function () {
+            $.ajax({
+                url: '/whois',
+                type: "post",
+                data: {domain: $("#name").val()},
+                timeout: 5000, //超时时间
+                success: function (data) {
+                    var whois = JSON.parse(data);
+                    $("#query_domain").text(whois[0].top_whois_server);
+                    alert(data);
+                },  //成功后的处理
+                error: function(xhr){
+                    if (xhr.status=="0"){
+                        alert("超时，稍后重试");
+                    }else{
+                        alert("错误提示："+xhr.status+" "+xhr.statusText);
+                    }
+                }, // 出错后的处理
+            });
+        });
     });
 </script>
 {% end %}
