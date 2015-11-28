@@ -14,9 +14,11 @@ function test(domain_whois) {
 
 //ajax数据分析
 $(function () {
-    $("#domain_query").bind("click", function () {
-        $.post('/whois', {domain: $("#domain").val()}, function (data) {
-            test(data);
+    $("#btn-query").bind("click", function () {
+        $.post('/whois/query', {domain: $("#name").val()}, function (data) {
+            //test(data);
+            alert(data);
+            alert(typeof (JSON.parse(data)));
         });
     });
 });

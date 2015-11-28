@@ -4,22 +4,18 @@
 {% end %}
 {% block body %}
 <div class="row" style="background-color: white;margin-top: 40px;">
-    <div class="row">
-        <form method="post" action="/whois" style="margin-top: 50px;">
-            <div class="row">
-                <div class="large-3 columns">
-                    <label for="name" class="inline right">请输入域名</label>
-                </div>
-                <div class="large-6 columns">
-                    <input type="text" id="name" name="domain" placeholder="例,baidu.com" required>
-                </div>
-                <div class="large-3 columns">
-                    <input type="submit" class="button tiny" value="查询">
-                </div>
-
-            </div>
-        </form>
+    <div class="row" style="margin-top: 50px;">
+        <div class="large-3 columns">
+            <label for="name" class="inline right">请输入域名</label>
+        </div>
+        <div class="large-6 columns">
+            <input type="text" id="name" name="domain" placeholder="例,baidu.com" required>
+        </div>
+        <div class="large-3 columns">
+            <button class="button tiny" id="btn-query">WHOIS查询</button>
+        </div>
     </div>
+
     <div class="row" hidden>
         <div class="large-12 columns">
             <div data-alert class="alert-box secondary radius">
@@ -39,39 +35,39 @@
                     <tbody>
                         <tr>
                             <td>域名<br>Domain Name</td>
-                            <td>{{domain}}</td>
+                            <td id="query_domain"></td>
                         </tr>
                         <tr>
                             <td>WHOIS服务器<br>Whois Server</td>
-                            <td>{{server}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>注册机构<br>Registrant Organization</td>
-                            <td>{{reg_org}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>注册人<br>Registrant Name</td>
-                            <td>{{reg_name}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>注册电话<br>Registrant Phone</td>
-                            <td>{{reg_phone}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>注册邮箱<br>Registrant Email</td>
-                            <td>{{reg_email}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>注册日期<br>Creation Date</td>
-                            <td>{{creation_date}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>更改日期<br>Updated Date</td>
-                            <td>{{updated_date}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>到期日期<br>Expiration Date</td>
-                            <td>{{expiration_date}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -81,7 +77,6 @@
                         <tr hidden id="tr-show">
                             <td colspan="2">
                                 <pre>
-                                {{detail}}
                                 </pre>
                             </td>
                         </tr>
@@ -130,6 +125,16 @@
                     $("#more").attr("class","fa fa-angle-double-right fa-fw");
                 }
             });
+       });
+    });
+    $(document).ready(function(){
+       $("#btn-query").bind("click",function(){
+           $.post('/whois/query', {domain: $("#name").val()}, function (data) {
+            //test(data);
+//            alert(data);
+               alert(typeof (data));
+               alert(typeof (JSON.parse(data)));
+        });
        });
     });
 </script>
