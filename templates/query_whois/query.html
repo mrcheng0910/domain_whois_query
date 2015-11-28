@@ -1,6 +1,12 @@
 {% extends "../main_tp.html" %}
 {% block head %}
 <title>域名whois查询</title>
+<style>
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+</style>
 {% end %}
 {% block body %}
 <div class="row" style="background-color: white;margin-top: 40px;">
@@ -15,7 +21,6 @@
             <button class="button tiny" id="btn-query">WHOIS查询</button>
         </div>
     </div>
-
     <div class="row" hidden>
         <div class="large-12 columns">
             <div data-alert class="alert-box secondary radius">
@@ -25,7 +30,7 @@
     </div>
     <div class="row">
         <div class="large-8 columns">
-            <table style="margin-left: 40px;width:auto;">
+            <table style="margin-left: 40px;">
                 <thead>
                 <tr>
                     <th width="200">关键信息</th>
@@ -39,50 +44,50 @@
                 </tr>
                 <tr>
                     <td>WHOIS服务器<br>Whois Server</td>
-                    <td></td>
+                    <td id="top_whois_server"></td>
                 </tr>
                 <tr>
                     <td>注册机构<br>Registrant Organization</td>
-                    <td></td>
+                    <td id="reg_org"></td>
                 </tr>
                 <tr>
                     <td>注册人<br>Registrant Name</td>
-                    <td></td>
+                    <td id="reg_name"></td>
                 </tr>
                 <tr>
                     <td>注册电话<br>Registrant Phone</td>
-                    <td></td>
+                    <td id="reg_phone"></td>
                 </tr>
                 <tr>
                     <td>注册邮箱<br>Registrant Email</td>
-                    <td></td>
+                    <td id="reg_email"></td>
                 </tr>
                 <tr>
                     <td>注册日期<br>Creation Date</td>
-                    <td></td>
+                    <td id="creation_date"></td>
                 </tr>
                 <tr>
                     <td>更改日期<br>Updated Date</td>
-                    <td></td>
+                    <td id="updated_date"></td>
                 </tr>
                 <tr>
                     <td>到期日期<br>Expiration Date</td>
-                    <td></td>
+                    <td id="expiration_date"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <span class="label" id="btn-more" style="font-size:14px;"><i
-                                class="fa fa-angle-double-right fa-fw" id="more"></i> 更详细信息</span>
+                        <span class="label" id="btn-more" style="font-size:14px;">
+                            <i class="fa fa-angle-double-right fa-fw" id="more"></i>
+                            更多详细信息
+                        </span>
                     </td>
                 </tr>
                 <tr hidden id="tr-show">
                     <td colspan="2">
-                                <pre>
-                                </pre>
+                        <pre id="details"></pre>
                     </td>
                 </tr>
                 </tbody>
-
             </table>
         </div>
         <div class="large-4 columns">
@@ -130,25 +135,46 @@
     });
     $(document).ready(function () {
         $("#btn-query").bind("click", function () {
+            $("#query_domain").text($("#name").val());
             $.ajax({
-                url: '/whois',
-                type: "post",
-                data: {domain: $("#name").val()},
+                url: '/whois/query',
+                type: "get",
+                data: {
+                    domain: $("#name").val(),
+                    stamp: Math.random()   // preventing "get" method using cache send to client
+                },
                 timeout: 5000, //超时时间
                 success: function (data) {
-                    var whois = JSON.parse(data);
-                    $("#query_domain").text(whois[0].top_whois_server);
-                    alert(data);
+                    assignment_element(data);
                 },  //成功后的处理
-                error: function(xhr){
-                    if (xhr.status=="0"){
+                error: function (xhr) {
+                    if (xhr.status == "0") {
                         alert("超时，稍后重试");
-                    }else{
-                        alert("错误提示："+xhr.status+" "+xhr.statusText);
+                    } else {
+                        alert("错误提示：" + xhr.status + " " + xhr.statusText);
                     }
                 }, // 出错后的处理
             });
         });
     });
+    function assignment_element(data) {
+        var whois = JSON.parse(data);
+        $("#top_whois_server").text(whois[0].top_whois_server);
+        $("#reg_org").text(whois[0].org_name);
+        $("#reg_name").text(whois[0].reg_name);
+        $("#reg_phone").text(whois[0].reg_phone);
+        $("#reg_email").text(whois[0].reg_email);
+        $("#creation_date").text(whois[0].creation_date);
+        $("#updated_date").text(whois[0].updated_date);
+        $("#expiration_date").text(whois[0].expiration_date);
+        $("#details").text(whois[0].domain_details);
+    }
+    document.onkeydown = function (e) {
+        var theEvent = window.event || e;
+        var code = theEvent.keyCode || theEvent.which;
+        if (code == 13) {
+            $("#btn-query").click();
+        }
+    };
 </script>
 {% end %}
