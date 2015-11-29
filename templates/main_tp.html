@@ -8,7 +8,7 @@
     <script src="http://static.runoob.com/assets/jquery/2.0.3/jquery.min.js"></script>
     <script src="http://static.runoob.com/assets/foundation-5.5.3/js/foundation.min.js"></script>
     <script src="http://static.runoob.com/assets/foundation-5.5.3/js/vendor/modernizr.js"></script>
-    <link rel="stylesheet" href="{{static_url("css/main.css")}}">
+    <link rel="stylesheet" href={{static_url("css/main.css")}}>
     {% block head %}
     <title>测试首页内容</title>
     {% end %}
@@ -55,8 +55,7 @@
         </section>
     </nav>
 </div>
-{% block body %}
-{% end %}
+{% block body %}{% end %}
 <footer>
       <div class="row">
           <div class="large-12 columns footer">

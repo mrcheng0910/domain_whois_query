@@ -52,7 +52,7 @@ h1,h2,h3,h4 {font-family:'Open Sans Condensed',sans-serif; font-weight: normal; 
 .no-js nav {
 	display: none;
 }
-
+/*set the pre elements to auto wrap*/
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
